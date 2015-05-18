@@ -45,6 +45,7 @@ The script checks if files exist in the directory "UCI HAR Dataset". If not, it 
 
 ###Reading the training and test dataset into various variables
 The following data files are read assuming no header. Any **N/A** strings are converted to **NA**
+
 Variable | Data File
 -------- | ---------
 subject_train | subject_train.txt
