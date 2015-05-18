@@ -45,14 +45,14 @@ The script checks if files exist in the directory "UCI HAR Dataset". If not, it 
 
 ###Reading the training and test dataset into various variables
 The following data files are read assuming no header. Any **N/A** strings are converted to **NA**
-Variable|Data File
---------|---------
-subject_train|subject_train.txt
-y_train|y_train.txt
-x_train|X_train.txt
-subject_test|subject_test.txt
-y_test|y_test.txt
-x_test|X_test.txt
+Variable | Data File
+-------- | ---------
+subject_train | subject_train.txt
+y_train | y_train.txt
+x_train | X_train.txt
+subject_test | subject_test.txt
+y_test | y_test.txt
+x_test | X_test.txt
 
 	
 To add descriptive labels, the file 'activity_labels.txt' is read into a new variable called activity_lables. First column of that table contains the index value and the second column contains a descriptive name of the activity.
@@ -62,6 +62,7 @@ To add descriptive variable names, the file 'features.txt' is read into a new ve
 Judging from the dimension and shape of the dataset, they appear to be simple _lego blocks_ that can simply be put together using simple cbind and rbind
 	
 The training and test data set is combined together using _cbind_ in this order:
+
 1. A new column indicating the type of the dataset (whether TRAIN or TEST)
 2. Subject (either subject_train or subject_test)
 3. Activity (either y_train or y_test)
@@ -80,18 +81,19 @@ A new column called "data_set" is created to indicate whether the original data 
 Per the course guideline, the dataset should only contain mean and standard deviation data
 Here I'm making the assumption that the column variables are named in such a way that the columns can simply be filtered out looking for the words *mean* and *std* using the grep function
 Caution: the column names are case sensitive (hence ignore.case = TRUE)
+
 The merged data set is stripped of all columns except the following data:
+
 1. origin of the dataset (either TRAIN or TEST)
 2. subject (numeric value 1 through 30)
 3. activity name (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
 4. mean and standard deviation for each measurement
 
-###Tidying up and xporting the data
+###Tidying up and exporting the data
 A final tidy dataset is created by taking the average of each variable grouped by each subject and each activity. Note that the information about whether the subject is in the training or test group is retained to facilitate easy analysis.
 The result is written into a text file called 'UCI HAR Tidy Dataset.txt'
 To read the data, you may run this piece of code [3]
 >data <- read.table(file_path, header = TRUE)
->View(data)
 
 
 **NOTES**
