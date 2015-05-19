@@ -86,11 +86,11 @@ Note that there are three types of "mean" value in the original dataset
 1. mean(): Mean value
 2. meanFreq(): Weighted average of the frequency components to obtain a mean frequency
 3. Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-* gravityMean
-* tBodyAccMean
-* tBodyAccJerkMean
-* tBodyGyroMean
-* tBodyGyroJerkMean
+	* gravityMean
+	* tBodyAccMean
+	* tBodyAccJerkMean
+	* tBodyGyroMean
+	* tBodyGyroJerkMean
 
 Here I'm making the assumption that only the first definition of mean value is relevant for this exercise as the other two are either weighted averages or sampled mean.
 
