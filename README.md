@@ -80,15 +80,31 @@ A new column called "data_set" is created to indicate whether the original data 
 
 ###Simplifying the data
 Per the course guideline, the dataset should only contain mean and standard deviation data
-Here I'm making the assumption that the column variables are named in such a way that the columns can simply be filtered out looking for the words *mean* and *std* using the grep function
-Caution: the column names are case sensitive (hence ignore.case = TRUE)
+
+Note that there are three types of "mean" value in the original dataset
+
+1. mean(): Mean value
+2. meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+3. Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+* gravityMean
+* tBodyAccMean
+* tBodyAccJerkMean
+* tBodyGyroMean
+* tBodyGyroJerkMean
+
+Here I'm making the assumption that only the first definition of mean value is relevant for this exercise as the other two are either weighted averages or sampled mean.
+
+Standard deviation on the other hand is easier as there is only one definition: *std*
+
+As a result, the column variables are filtered to exclude everything except columns variables that contain the words *mean()* or *std* using the grep function
+For precaution, ignore.case = TRUE is used
 
 The merged data set is stripped of all columns except the following data:
 
 1. origin of the dataset (either TRAIN or TEST)
 2. subject (numeric value 1 through 30)
 3. activity name (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-4. mean and standard deviation for each measurement
+4. mean and standard deviation for each measurement (column variable names contain the words 'mean()' or 'std')
 
 ###Tidying up and exporting the data
 A final tidy dataset is created by taking the average of each variable grouped by each subject and each activity. Note that the information about whether the subject is in the training or test group is retained to facilitate easy analysis.

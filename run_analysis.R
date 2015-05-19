@@ -43,8 +43,8 @@ data <- rbind(data_train, data_test)
 colnames(data) <- c("activity_label", "data_set", "subject", features, "activity_name")
 
 ## Extract only the measurements on the mean and standard deviation for each measurement
-## Here I'm assuming that the column names contain the word "mean" or "std" (not case sensitive)
-trimmed_data <- tbl_df(data[, grep("data_set|subject|activity_name|mean|std", colnames(data), ignore.case = TRUE)])
+## Here I'm assuming that the column names contain the word "mean()" or "std()"
+trimmed_data <- tbl_df(data[, grep("data_set|subject|activity_name|mean\\(|std", colnames(data), ignore.case = TRUE)])
 
 ## Create a second, independent tidy data set with the average of each variable for each activity and each subject
 tidydata <- trimmed_data %>%
