@@ -1,5 +1,7 @@
 #CodeBook for UCI HAR Tidy Dataset
 
+For more details about the origin of the data and the transformation applied, see README.md
+
 There are a total of 180 rows in the data, each representing one subject performing one activity.
 
 There are a total of 30 subjects and 6 different types of activities.
@@ -20,11 +22,8 @@ The clean data consists of an additional 66 variables. They are all averages of 
 
 The values are normalized and bounded within [-1,1]
 
-Field Name | Description | Details
----------- | ----------- | -------
-data_set | Whether the subject is in training or test group | 'TRAIN' or 'TEST'
-subject | Anonynimized subject identification number | 1 through 30
-activity_name | Either one of six different activities | 'LAYING', 'SITTING', 'STANDING', 'WALKING', 'WALKING_DOWNSTAIRS' and 'WALKING_UPSTAIRS'
+Field Name | Description
+---------- | -----------
 tBodyAcc-mean()-X | Average of mean body acceleration time domain signal in the X axis
 tBodyAcc-mean()-Y | Average of mean body acceleration time domain signal in the Y axis
 tBodyAcc-mean()-Z | Average of mean body acceleration time domain signal in the Z axis
@@ -49,12 +48,12 @@ tBodyGyro-mean()-Z | Average of mean body gyroscope raw time domain signal in th
 tBodyGyro-std()-X | Average of standard deviation of body gyroscope raw time domain signal in the X axis
 tBodyGyro-std()-Y | Average of standard deviation of body gyroscope raw time domain signal in the Y axis
 tBodyGyro-std()-Z | Average of standard deviation of body gyroscope raw time domain signal in the Z axis
-tBodyGyroJerk-mean()-X | Average of mean jerk time domain signal derived from body gyroscope time domain signal in the X axis
-tBodyGyroJerk-mean()-Y | Average of mean jerk time domain signal derived from body gyroscope time domain signal in the Y axis
-tBodyGyroJerk-mean()-Z | Average of mean jerk time domain signal derived from body gyroscope time domain signal in the Z axis
-tBodyGyroJerk-std()-X | Average of standard deviation of jerk time domain signal derived from body gyroscope time domain signal in the X axis
-tBodyGyroJerk-std()-Y | Average of standard deviation of jerk time domain signal derived from body gyroscope time domain signal in the Y axis
-tBodyGyroJerk-std()-Z | Average of standard deviation of jerk time domain signal derived from body gyroscope time domain signal in the Z axis
+tBodyGyroJerk-mean()-X | Average of mean jerk signal derived from body gyroscope time domain signal in the X axis
+tBodyGyroJerk-mean()-Y | Average of mean jerk signal derived from body gyroscope time domain signal in the Y axis
+tBodyGyroJerk-mean()-Z | Average of mean jerk signal derived from body gyroscope time domain signal in the Z axis
+tBodyGyroJerk-std()-X | Average of standard deviation of jerk signal derived from body gyroscope time domain signal in the X axis
+tBodyGyroJerk-std()-Y | Average of standard deviation of jerk signal derived from body gyroscope time domain signal in the Y axis
+tBodyGyroJerk-std()-Z | Average of standard deviation of jerk signal derived from body gyroscope time domain signal in the Z axis
 tBodyAccMag-mean() | Average of mean magnitude of 3-dimensional body acceleration time domain signals
 tBodyAccMag-std() | Average of standard deviation of magnitude of 3-dimensional body acceleration time domain signals
 tGravityAccMag-mean() | Average of mean magnitude of 3-dimensional gravity acceleration time domain signals

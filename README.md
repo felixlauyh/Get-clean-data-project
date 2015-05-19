@@ -112,6 +112,7 @@ The result is written into a text file called 'UCI HAR Tidy Dataset.txt'
 To read the data, you may run this piece of code [3]
 >data <- read.table("UCI HAR Tidy Dataset.txt", header = TRUE)
 
+For more details about the resulting data, see CodeBook.md
 
 **NOTES**
 
