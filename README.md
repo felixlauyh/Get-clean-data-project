@@ -96,7 +96,7 @@ Here I'm making the assumption that only the first definition of mean value is r
 
 Standard deviation on the other hand is easier as there is only one definition: *std*
 
-As a result, the column variables are filtered to exclude everything except columns variables that contain the words *mean()* or *std* using the grep function
+As a result, the column variables are filtered to exclude everything except column variables that contain the words *mean()* or *std* using the grep function
 For precaution, ignore.case = TRUE is used
 
 The merged data set is stripped of all columns except the following data:
@@ -110,12 +110,12 @@ The merged data set is stripped of all columns except the following data:
 A final tidy dataset is created by taking the average of each variable grouped by each subject and each activity. Note that the information about whether the subject is in the training or test group is retained to facilitate easy analysis.
 The result is written into a text file called 'UCI HAR Tidy Dataset.txt'
 To read the data, you may run this piece of code [3]
->data <- read.table(file_path, header = TRUE)
+>data <- read.table("UCI HAR Tidy Dataset.txt", header = TRUE)
 
 
 **NOTES**
 
-* to run the run_analysis.R script, you must have the "data.table" package installed
+* to run the run_analysis.R script, you must have the "dplyr" package installed
 * the script was successfully run using R version 3.2.0 and R Studio Version 0.98.1103 in Windows 8.1
 * The script does not require additional user input or any manual intervention
 
