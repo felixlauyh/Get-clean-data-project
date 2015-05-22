@@ -68,7 +68,7 @@ Additionally, the file 'features.txt' is read into a new vector called features.
 ###Merging the data
 Judging from the dimension and _lego-blocks-like_ shape of the dataset, it is assumed that the data can simply be put back together using *cbind* and *rbind*
 	
-The training and test data set is combined together using *cbind* in this order, resulting in two new variables data_train and data_test:
+The training and test data set is combined together using *cbind* in this order, resulting in two new variables **data_train** and **data_test**:
 
 1. A new column indicating the type of the dataset (whether TRAIN or TEST)
 2. Subject (either subject_train or subject_test)
