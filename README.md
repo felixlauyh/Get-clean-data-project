@@ -68,7 +68,7 @@ Additionally, the file 'features.txt' is read into a new vector called features.
 ###Merging the data
 Judging from the dimension and _lego-blocks-like_ shape of the dataset, it is assumed that the data can simply be put back together using *cbind* and *rbind*
 	
-The training and test data set is combined together using *cbind* in this order:
+The training and test data set is combined together using *cbind* in this order, resulting in two new variables data_train and data_test:
 
 1. A new column indicating the type of the dataset (whether TRAIN or TEST)
 2. Subject (either subject_train or subject_test)
@@ -80,7 +80,7 @@ The variables y_train and y_test contain the activity labels (number 1 through 6
 Note that x_train.txt and x_test.txt have no column (i.e. variable) names
 The column names of the 561 measurements/variables are renamed based on the variable features, again assuming the data is organized in _lego-block_ fashion
 
-The training and test dataset are then combined together simply using *rbind*.
+The training and test dataset are then combined together to form a new variable **data** simply using *rbind*.
 A new column called "data_set" is created to indicate whether the original data is for training or test
 
 ###Simplifying the data
@@ -104,7 +104,7 @@ Standard deviation on the other hand is easier as there is only one definition: 
 As a result, the column variables are filtered to exclude everything except column variables that contain the words *mean()* or *std* using the *grep* function
 For precaution, ignore.case = TRUE is used
 
-The merged data set is stripped of all columns except the following data:
+The merged data set is stripped of all columns except the following data and a new variable **trimmed_data** is created:
 
 1. origin of the dataset (either TRAIN or TEST)
 2. subject (numeric value 1 through 30)
@@ -112,7 +112,7 @@ The merged data set is stripped of all columns except the following data:
 4. mean and standard deviation for each measurement (column variable names contain the words 'mean()' or 'std')
 
 ###Tidying up and exporting the data
-A final tidy dataset is created by taking the average of each variable grouped by each subject and each activity. Note that the information about whether the subject is in the training or test group is retained to facilitate easy analysis.
+A final tidy dataset is created and stored in a new variable **tidydata** by taking the average of each variable grouped by each subject and each activity. Note that the information about whether the subject is in the training or test group is retained to facilitate easy analysis.
 The result is written into a text file called 'UCI HAR Tidy Dataset.txt'
 To read the data, you may run this piece of code [3]
 >data <- read.table("UCI HAR Tidy Dataset.txt", header = TRUE)
