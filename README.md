@@ -1,6 +1,12 @@
-#Coursera Data Science Class Getting and Cleaning Data Course Project
+#Coursera Data Science Specialization - Getting and Cleaning Data Course Project
 
 This analysis is undertaken as part of Coursera Data Science Specialization Getting and Cleaning Data Course Project
+
+The full package consists of 3 files:
+
+* this README.md
+* run_analysis.R - a script written in R that transforms the source data into a clean tidy dataset
+* CodeBook.md - describes the data and variables in that tidy dataset
 
 ## The Source Data
 
@@ -46,42 +52,41 @@ The script checks if files exist in the directory "UCI HAR Dataset". If not, it 
 ###Reading the training and test dataset into various variables
 The following data files are read assuming no header. Any **N/A** strings are converted to **NA**
 
-Variable | Data File
--------- | ---------
-subject_train | subject_train.txt
-y_train | y_train.txt
-x_train | X_train.txt
-subject_test | subject_test.txt
-y_test | y_test.txt
-x_test | X_test.txt
+Variable | Data File | Dimension of Data
+-------- | --------- | -----------------
+subject_train | subject_train.txt | 7352 observations of 1 variable
+y_train | y_train.txt | 7352 observations of 1 variable
+x_train | X_train.txt | 7352 observations of 561 variables
+subject_test | subject_test.txt | 2947 observations of 1 variable
+y_test | y_test.txt | 2947 observations of 1 variable
+x_test | X_test.txt | 2947 observations of 561 variable
 
-	
-To add descriptive labels, the file 'activity_labels.txt' is read into a new variable called activity_lables. First column of that table contains the index value and the second column contains a descriptive name of the activity.
-To add descriptive variable names, the file 'features.txt' is read into a new vector called features.  Even though the original data contains an index column (number 1 through 561), it is ignored
+The file 'activity_labels.txt' is read into a new variable called activity_lables. It has 6 rows of data consisting of the activity index value (1 to 6) and the description of the six activities. Its index values are tied to y_train and y_test.
+
+Additionally, the file 'features.txt' is read into a new vector called features. It has 561 rows of data consisting of the feature index value (1 to 561) and the description of the 561 variables. Its index values are tied to the column number of x_train and x_test. For the purpose of this analysis, the first column of data containing the index value is ignored.
 
 ###Merging the data
-Judging from the dimension and shape of the dataset, they appear to be simple _lego blocks_ that can simply be put together using simple cbind and rbind
+Judging from the dimension and _lego-blocks-like_ shape of the dataset, it is assumed that the data can simply be put back together using *cbind* and *rbind*
 	
-The training and test data set is combined together using _cbind_ in this order:
+The training and test data set is combined together using *cbind* in this order:
 
 1. A new column indicating the type of the dataset (whether TRAIN or TEST)
 2. Subject (either subject_train or subject_test)
 3. Activity (either y_train or y_test)
 4. 561 measurements/variables from the study (either x_train or x_test)
 
-The variables y_train and y_test contain the activity labels (number 1 through 6) but not the descriptive labels
-The list of activity description is merged into y_train and y_test as a new column called activity_name by referencing the index labels
+The variables y_train and y_test contain the activity labels (number 1 through 6) but not the descriptive labels. As a result, the list of activity description is merged into y_train and y_test as a new column called activity_name by referencing the index labels
 
 Note that x_train.txt and x_test.txt have no column (i.e. variable) names
-The column names of the 561 measurements/variables are renamed based on the variable features, again assuming the data is organized in _lego block_ fashion
+The column names of the 561 measurements/variables are renamed based on the variable features, again assuming the data is organized in _lego-block_ fashion
 
-The training and test dataset are then combined together simply using _rbind_.
+The training and test dataset are then combined together simply using *rbind*.
 A new column called "data_set" is created to indicate whether the original data is for training or test
 
 ###Simplifying the data
 Per the course guideline, the dataset should only contain mean and standard deviation data
 
-Note that there are three types of "mean" value in the original dataset
+Note that there are three types of "mean" value in the original dataset. According to the codebook provided with the original study, their definitions are:
 
 1. mean(): Mean value
 2. meanFreq(): Weighted average of the frequency components to obtain a mean frequency
@@ -92,11 +97,11 @@ Note that there are three types of "mean" value in the original dataset
 	* tBodyGyroMean
 	* tBodyGyroJerkMean
 
-Here I'm making the assumption that only the first definition of mean value is relevant for this exercise as the other two are either weighted averages or sampled mean.
+Here I'm making the assumption that only the first definition of mean value is relevant for this exercise as the other two are either weighted averages or sampled mean and for the purpose of this exercise cannot be considered "mean of the measurements".
 
 Standard deviation on the other hand is easier as there is only one definition: *std*
 
-As a result, the column variables are filtered to exclude everything except column variables that contain the words *mean()* or *std* using the grep function
+As a result, the column variables are filtered to exclude everything except column variables that contain the words *mean()* or *std* using the *grep* function
 For precaution, ignore.case = TRUE is used
 
 The merged data set is stripped of all columns except the following data:
